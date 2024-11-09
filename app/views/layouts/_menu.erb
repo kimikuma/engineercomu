@@ -1,0 +1,19 @@
+  <div class="col-md-3 bg-black text-white mt-5">
+  <% if signed_in? %>
+  <li style="list-style:none" class="mb-5 ">
+    <%=link_to users_path do %>
+    <i class="fa-solid fa-users"></i>
+    <% end %>
+  </li>
+  <li style="list-style:none" class="mb-5">
+    <%=link_to user_path(current_user) do %>
+    <i class="fa-regular fa-circle-user"></i>
+    <% end %>
+  </li>
+  <li style="list-style:none">
+    <%=link_to destroy_user_session_path,method: :delete do %>
+    <i class="fa-solid fa-right-from-bracket"></i>
+    <% end %>
+    <% end %>
+  </li>
+  </div>
