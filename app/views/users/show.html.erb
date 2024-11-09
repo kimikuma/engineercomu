@@ -1,20 +1,21 @@
 <div class="container">
 <div class="row">
 <%=render "layouts/menu" %>
-<div class="col-md-5 mt-5">
+<div class="col-md-4 mt-5">
 <%=image_tag @user.get_profile_image(70,70) %>
 <%=@user.name %>
+<% if @user!=current_user %>
+<% unless @user.guest_user? %>
+<span class="follow"><%=render "relationships/follow",user: @user %></span>
+<% end %>
+<% end %>
 <p class="mt-4"><%=@user.introduction %></p>
 <% if @user==current_user %>
 <% unless @user.guest_user? %>
-<%=link_to edit_user_path(@user) do %>
+<%=link_to edit_user_path(@user),class: "btn btn-block btn-outline-primary" do %>
 <i class="fa-solid fa-user-pen"></i>
 <% end %>
-<p>
-  <% unless @user==current_user&& @user.guest_user? %>
-  <%=render "relationships/follow",user: @user %>
-  <% end %>
-</p>
+
 <% end %>
 <% end %>
 </div>

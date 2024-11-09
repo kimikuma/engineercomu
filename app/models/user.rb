@@ -10,6 +10,11 @@ class User < ApplicationRecord
   has_many :reverse_relationships,class_name: "Relationship",foreign_key: :followed_id,dependent: :destroy
   has_many :followers,through: :reverse_relationships,source: :follower
 
+  has_many :user_rooms,dependent: :destroy
+  has_many :rooms,through: :user_rooms
+  has_many :chats,dependent: :destroy
+
+
   has_one_attached :profile_image
 
   def get_profile_image(width,height)
@@ -34,7 +39,7 @@ class User < ApplicationRecord
   end
 
   def follow(user)
-    relationships.create(followd_id: user.id)
+    relationships.create(followed_id: user.id)
   end
 
   def unfollow(user)
