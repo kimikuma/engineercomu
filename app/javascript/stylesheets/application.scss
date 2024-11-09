@@ -1,1 +1,11 @@
 @use '~bootstrap/scss/bootstrap';
+
+
+body{
+  font-family: "Doto", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 100px;
+  font-style: normal;
+  font-variation-settings:
+    "ROND" 0;
+}

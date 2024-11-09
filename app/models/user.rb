@@ -4,6 +4,12 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  has_many :relationships,class_name: "Relationship",foreign_key: :follower_id,dependent: :destroy
+  has_many :followings,through: :relationships,source: :followed
+
+  has_many :reverse_relationships,class_name: "Relationship",foreign_key: :followed_id,dependent: :destroy
+  has_many :followers,through: :reverse_relationships,source: :follower
+
   has_one_attached :profile_image
 
   def get_profile_image(width,height)
@@ -19,6 +25,7 @@ class User < ApplicationRecord
     find_or_create_by!(email: GUEST_USER_EMAIL) do |user|
       user.name="guestname"
       user.password=SecureRandom.urlsafe_base64
+      user.introduction="ゲストです"
     end
   end
 
@@ -26,4 +33,15 @@ class User < ApplicationRecord
     email==GUEST_USER_EMAIL
   end
 
+  def follow(user)
+    relationships.create(followd_id: user.id)
+  end
+
+  def unfollow(user)
+    relationships.find_by(followed_id: user.id).destroy
+  end
+
+  def following?(user)
+    followings.include?(user)
+  end
 end

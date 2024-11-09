@@ -4,12 +4,17 @@
 <div class="col-md-5 mt-5">
 <%=image_tag @user.get_profile_image(70,70) %>
 <%=@user.name %>
-<%=@user.introduction %>
+<p class="mt-4"><%=@user.introduction %></p>
 <% if @user==current_user %>
 <% unless @user.guest_user? %>
 <%=link_to edit_user_path(@user) do %>
 <i class="fa-solid fa-user-pen"></i>
 <% end %>
+<p>
+  <% unless @user==current_user&& @user.guest_user? %>
+  <%=render "relationships/follow",user: @user %>
+  <% end %>
+</p>
 <% end %>
 <% end %>
 </div>

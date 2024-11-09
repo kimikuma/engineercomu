@@ -2,15 +2,14 @@
 <div class="row">
 <%=render "layouts/menu" %>
 <div class="col-md-5 mt-5">
-<taable>
+<table>
 <% @users.each do |user| %>
-<tr class="border-bottom">
-<p><%=image_tag user.get_profile_image(50,50) %>
-<%=link_to user.name,user_path(user) %></p>
-<%=user.introduction%>
+<tr>
+<th class="border-bottom"><%=image_tag user.get_profile_image(50,50) %>
+<%=link_to user.name,user_path(user) %><br>
+<%=user.introduction%></th>
 </tr>
 <% end %>
-</taable>
-</div>
+</table>
 </div>
 </div>
