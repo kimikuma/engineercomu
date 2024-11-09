@@ -1,9 +1,12 @@
 <header>
+  <% if signed_in? %>
   <li>
     <%=link_to "users",users_path %>
   </li>
   <li>
     <%=link_to "user",user_path(current_user) %>
   </li>
+  <li>
     <%=link_to "logout",destroy_user_session_path,method: :delete %>
+  </li>
 </header>

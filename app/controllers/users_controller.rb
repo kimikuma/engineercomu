@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :judge_login_user,only: [:edit, :update]
   before_action :judge_guest_user,only: [:edit, :update]
   def index
-    @user=User.all
+    @users=User.all
   end
 
   def show
