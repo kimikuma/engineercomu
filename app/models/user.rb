@@ -13,7 +13,7 @@ class User < ApplicationRecord
   has_many :user_rooms,dependent: :destroy
   has_many :rooms,through: :user_rooms
   has_many :chats,dependent: :destroy
-
+  has_many :posts,dependent: :destroy
 
   has_one_attached :profile_image
 
@@ -49,4 +49,7 @@ class User < ApplicationRecord
   def following?(user)
     followings.include?(user)
   end
+
+
+
 end

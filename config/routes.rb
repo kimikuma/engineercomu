@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   devise_for :users
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root "homes#top"
@@ -8,6 +9,9 @@ Rails.application.routes.draw do
    get "users/followers"=>"relationships#followers"
   end
 
+  resources :posts
+  resources :chats
+  get 'rooms/index'
 
   devise_scope :user do
     post "users/guest_sign_in"=>"users/sessions#guest_login"

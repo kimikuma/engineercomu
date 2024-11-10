@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="row">
+    <%=render "layouts/menu" %>
+    <div class="col-md-5 mt-5">
+      <table>
+      <% @posts.each do |post| %>
+      <tr>
+      <th class="border-bottom">
+      <%=image_tag post.user.get_profile_image(50,50) %>
+      <%=link_to post.user.name,user_path(post.user) %>
+      <%=post.content %><br>
+      <%=post.created_at %>
+      </th>
+      </tr>
+      <% end %>
+      </table>
+      <%=link_to new_post_path,class: "btn btn-warning my-5" do %>
+      <i class="fa-solid fa-plus"></i>
+      <% end %>
+    </div>
+  </div>
+</div>

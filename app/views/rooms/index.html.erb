@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="row">
+    <%=render "layouts/menu" %>
+    <div class="col-md-5 mt-5">
+      <table>
+        <% @rooms.each do |room| %>
+        <% room.users.each do |user| %>
+        <% if user!=current_user %>
+        <tr>
+          <th class="border-bottom">
+            <%=link_to user.name,chat_path(user) %>
+            <%=image_tag user.get_profile_image(50,50) %>
+          </th>
+        </tr>
+        <% end %>
+        <% end %>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>

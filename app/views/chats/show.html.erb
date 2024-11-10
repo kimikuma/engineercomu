@@ -1,0 +1,27 @@
+<div class="container">
+<div class="row">
+<%=render "layouts/menu" %>
+<div class="col-md-8" style="background-color:rgba(135,206,250,0.5); border-radius:20px; height:700px">
+<h3 class="mt-4"><%=@user.name %>さんとのroom</h3>
+<div class="message" style="margin:10px auto;">
+  <% @chats.each do |chat| %>
+  <% if chat.user==current_user %>
+ <%=render "chats/message",chat: chat %>
+
+ <% else %>
+<div class="left-container d-flex">
+  <p><%=chat.user.name %></p>
+  <%=image_tag chat.user.get_profile_image(30,30),class: "rounded-circle" %>
+  <p id="chat<%=chat.id%>" style="background-color:rgba(230,230,250,0.6); border-radius:10px; padding:5px">
+  <%=chat.message %>
+  </p>
+
+</div>
+  <% end %>
+  <% end %>
+
+</div>
+<%=render "chats/form",chat: @chat %>
+</div>
+</div>
+</div>

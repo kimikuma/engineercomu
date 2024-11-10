@@ -1,0 +1,5 @@
+<%=form_with model: chat,url: chats_path,method: :post,local: false do |f| %>
+<%=f.text_field:message %>
+<%=f.hidden_field:room_id %>
+<p><%=f.submit "送信",class: "btn btn-outline-primary mt-3" %></p>
+<% end %>

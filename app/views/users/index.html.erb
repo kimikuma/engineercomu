@@ -5,7 +5,7 @@
 <table>
 <% @users.each do |user| %>
 <tr>
-<th class="border-bottom"><%=image_tag user.get_profile_image(50,50) %>
+<th class="border-bottom mb-3"><%=image_tag user.get_profile_image(50,50) %>
 <%=link_to user.name,user_path(user) %><br>
 <%=user.introduction%></th>
 </tr>
