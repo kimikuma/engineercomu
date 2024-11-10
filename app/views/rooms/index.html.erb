@@ -9,7 +9,8 @@
         <tr>
           <th class="border-bottom">
             <%=link_to user.name,chat_path(user) %>
-            <%=image_tag user.get_profile_image(50,50) %>
+            <%=image_tag user.get_profile_image(50,50) %><br>
+            chatをみよう
           </th>
         </tr>
         <% end %>

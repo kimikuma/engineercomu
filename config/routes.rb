@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   resources :chats
   get 'rooms/index'
 
+  resources :groups
+
   devise_scope :user do
     post "users/guest_sign_in"=>"users/sessions#guest_login"
   end

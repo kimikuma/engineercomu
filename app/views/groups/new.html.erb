@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="row">
+    <%=render "layouts/menu" %>
+    <div class="col-md-5 mt-5">
+      <%=form_with model: @group do |f| %>
+      <%=f.text_field:name %>
+      <%=f.text_area:introduction %>
+      <%=f_file_field:group_image,accept: "image/*" %>
+      <%=f.submit "作成",class: "btn btn-light" %>
+    </div>
+  </div>
+</div>

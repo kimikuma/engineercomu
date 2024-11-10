@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="row">
+    <%=render "layouts/menu" %>
+    <div class="col-md-5 mt-5">
+      <% @groups.each do |group| %>
+     <div class="group_content d-flex">
+        <%=image_tag group.get_group_image(100,100) %>
+        <%=group.name %>
+        <%=group.introduction %>
+       </div>
+       <% end %>
+       <%=link_to new_group_path,class: "btn btn-warning" do %>
+    <i class="fa-solid fa-plus"></i>
+    <% end %>
+    </div>
+
+  </div>
+</div>
