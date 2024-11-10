@@ -2,16 +2,23 @@
   <div class="row">
     <%=render "layouts/menu" %>
     <div class="col-md-5 mt-5">
+      <div class="content d-flex">
       <% @groups.each do |group| %>
-     <div class="group_content d-flex">
-        <%=image_tag group.get_group_image(100,100) %>
-        <%=group.name %>
-        <%=group.introduction %>
+     <div class="group_content  p-3 border border-primary ms-2" style="border-radius:10px; width:350px; height:300px; margin-right:20px">
+        <p><%=image_tag group.get_group_image(300,200) %><br>
+        <%=group.name %><br>
+        <%=group.introduction %><br>
+        <% if group.join_group?(current_user) %>
+        <%=link_to "不参加",group_group_users_path(group),method: :delete,class: "btn btn-danger" %>
+        <% else %>
+        <%=link_to "参加",group_group_users_path(group),method: :post,class: "btn btn-success" %>
+        <% end %>
        </div>
        <% end %>
-       <%=link_to new_group_path,class: "btn btn-warning" do %>
-    <i class="fa-solid fa-plus"></i>
-    <% end %>
+       </div>
+       <%=link_to new_group_path,class: "btn btn-warning mt-5" do %>
+      <i class="fa-solid fa-plus"></i>
+      <% end %>
     </div>
 
   </div>
