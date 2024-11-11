@@ -22,6 +22,7 @@ Rails.application.routes.draw do
    resources :group_chats
   end
 
+  resources :notifications,only: [:update]
 
   devise_scope :user do
     post "users/guest_sign_in"=>"users/sessions#guest_login"

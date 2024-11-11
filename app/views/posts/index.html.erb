@@ -11,8 +11,13 @@
       <%=post.content %><br>
       <%=post.created_at %>
       <span class="favorite<%=post.id %>">
-        <%=render "favorites/favorite",post: post %>
+       <%=render "favorites/favorite",post: post %>
         </span>
+        <% if current_user.following?(post.user) %>
+        <%=link_to chat_path(post.user) do %>
+        <i class="fa-brands fa-rocketchat"></i>
+        <% end %>
+        <% end %>
       </th>
       </tr>
       <% end %>
