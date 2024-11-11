@@ -9,13 +9,19 @@ Rails.application.routes.draw do
    get "users/followers"=>"relationships#followers"
   end
 
-  resources :posts
+  resources :posts do
+   resource :favorites
+  end
+
+
   resources :chats
   get 'rooms/index'
 
   resources :groups do
    resource :group_users
+   resources :group_chats
   end
+
 
   devise_scope :user do
     post "users/guest_sign_in"=>"users/sessions#guest_login"

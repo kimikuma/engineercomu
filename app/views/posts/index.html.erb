@@ -10,6 +10,9 @@
       <%=link_to post.user.name,user_path(post.user) %>
       <%=post.content %><br>
       <%=post.created_at %>
+      <span class="favorite<%=post.id %>">
+        <%=render "favorites/favorite",post: post %>
+        </span>
       </th>
       </tr>
       <% end %>
