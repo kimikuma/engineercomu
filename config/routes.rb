@@ -24,6 +24,8 @@ Rails.application.routes.draw do
 
   resources :notifications,only: [:update]
 
+  get "/search"=>"searchs#search"
+
   devise_scope :user do
     post "users/guest_sign_in"=>"users/sessions#guest_login"
   end
