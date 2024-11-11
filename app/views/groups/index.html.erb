@@ -6,14 +6,12 @@
       <% @groups.each do |group| %>
      <div class="group_content  p-3 border border-primary ms-2" style="border-radius:10px; width:350px; height:300px; margin-right:20px">
         <p><%=image_tag group.get_group_image(300,200) %><br>
-        <%=link_to group.name,group_path(group) %><br>
+        <%=group.name%><br>
         <%=group.introduction %>
         <% unless group.owner_id==current_user.id %>
-        <% if group.includesUser?(current_user) %>
-        <%=link_to "Leave this group",group_group_users_path(group),method: :delete,class: "btn btn-danger" %>
-        <% else %>
-        <%=link_to "Join this group",group_group_users_path(group),method: :post,class: "btn btn-success" %>
-        <% end %>
+        <span class="group<%=group.id%>">
+          <%=render "group_users/group",group: group %>
+        </span>
         <% end %>
        </div>
        <% end %>
