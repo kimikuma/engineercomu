@@ -6,9 +6,7 @@ class NotificationsController < ApplicationController
     case notification.notifiable_type
     when "Favorite"
       redirect_to user_path(notification.notifiable.user)
-    when "Chat"
-      redirect_to chat_path(notification.notifiable)
-    end
+    end  
   end
 
 end

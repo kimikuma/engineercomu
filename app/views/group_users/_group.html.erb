@@ -1,5 +1,6 @@
 <% if group.includesUser?(current_user) %>
-<%=link_to "不参加",group_group_users_path(group),method: :delete,class: "btn btn-danger btn-sm",remote: true %>
+  <%=link_to "不参加",group_group_users_path(group),method: :delete,class: "btn btn-danger btn-sm",remote: true %>
+  <%=link_to "chat", group_group_chats_path(group_id: group.id), class: "btn btn-outline-primary" %>
 <% else %>
-<%=link_to "参加",group_group_users_path(group),method: :post,class: "btn btn-success btn-sm",remote: true %>
+  <%=link_to "参加",group_group_users_path(group),method: :post,class: "btn btn-success btn-sm",remote: true %>
 <% end %>

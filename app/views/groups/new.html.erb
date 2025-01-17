@@ -3,13 +3,13 @@
     <%=render "layouts/menu" %>
     <div class="col-md-5 mt-5">
       <%=form_with model: @group do |f| %>
-      <%=f.label:name %>
-      <p><%=f.text_field:name,placeholder: "グループの名前" %></p>
-      <%=f.label:introduction %>
-      <p><%=f.text_area:introduction,placeholder: "グループの紹介" %></p>
-      <%=f.label:image %>
-      <p><%=f.file_field:group_image,accept: "image/*" %></p>
-      <p><%=f.submit "作成",class: "btn btn-light" %></p>
+        <%=f.label:name %><br>
+        <%=f.text_field:name,placeholder: "グループの名前" %><br>
+        <%=f.label:introduction %><br>
+        <%=f.text_area:introduction,placeholder: "グループの紹介" %><br>
+        <%=f.label:image %><br>
+        <%=f.file_field:group_image,accept: "image/*" %><br>
+        <%=f.submit "作成",class: "btn btn-light" %>
       <% end %>
     </div>
   </div>

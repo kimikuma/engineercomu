@@ -1,26 +1,25 @@
 <div class="container">
-<div class="row">
-<%=render "layouts/menu" %>
-<div class="col-md-4 mt-5">
-<%=image_tag @user.get_profile_image(70,70) %>
-<%=@user.name %>
-<p class="my-3"><% if @user!=current_user %>
-<% unless @user.guest_user? %>
-<span class="follow"><%=render "relationships/follow",user: @user %></span>
-<% end %>
-<% end %>
-<% if @user!=current_user&&current_user.following?(@user)&&@user.following?(current_user) %>
-<%=link_to "chat start",chat_path(@user),class: "btn btn-outline-secondary" %>
-<% end %></p>
-<p class="mt-4"><%=@user.introduction %></p>
-<% if @user==current_user %>
-<% unless @user.guest_user? %>
-<%=link_to edit_user_path(@user),class: "btn btn-block btn-outline-primary" do %>
-<i class="fa-solid fa-user-pen"></i>
-<% end %>
-
-<% end %>
-<% end %>
-</div>
-</div>
+  <div class="row">
+    <%=render "layouts/menu" %>
+      <div class="col-md-4 mt-5">
+        <%=image_tag @user.get_profile_image(70,70) %>
+        <%=@user.name %>
+        <p class="my-3">
+          <% if @user!=current_user %>
+            <% unless @user.guest_user? %>
+              <span class="follow"><%=render "relationships/follow",user: @user %></span>
+            <% end %>
+          <% end %>
+          <% if @user!=current_user&&current_user.following?(@user)&&@user.following?(current_user) %>
+            <%=link_to "chat start",chat_path(@user),class: "btn btn-outline-secondary" %>
+          <% end %>
+        </p>
+        <p class="mt-4"><%=@user.introduction %></p>
+        <% if @user==current_user %>
+          <% unless @user.guest_user? %>
+            <%=link_to edit_user_path(@user),class: "btn btn-block btn-outline-primary" do %><i class="fa-solid fa-user-pen"></i><% end %>
+          <% end %>
+        <% end %>
+      </div>
+  </div>
 </div>

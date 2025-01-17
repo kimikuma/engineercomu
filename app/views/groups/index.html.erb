@@ -3,24 +3,20 @@
     <%=render "layouts/menu" %>
     <div class="col-md-5 mt-5">
       <div class="content d-flex">
-      <% @groups.each do |group| %>
-     <div class="group_content  p-3 border border-primary ms-2" style="border-radius:10px; width:350px; height:300px; margin-right:20px">
-        <p><%=image_tag group.get_group_image(300,200) %><br>
-        <%=group.name%><br>
-        <%=group.introduction %>
-        <% unless group.owner_id==current_user.id %>
-        <span class="group<%=group.id%>">
-          <%=render "group_users/group",group: group %>
-        </span>
-
+        <% @groups.each do |group| %>
+          <div class="group_content  p-3 border border-primary ms-2" style="border-radius:10px; width:350px; height:300px; margin-right:20px">
+            <%=image_tag group.get_group_image(300,200) %><br>
+            <%=group.name%><br>
+            <%=group.introduction %>
+            <% unless group.owner_id==current_user.id %>
+              <span class="group<%=group.id%>"><%=render "group_users/group",group: group %></span>
+            <% end %>
+          </div>
         <% end %>
-       </div>
-       <% end %>
-       </div>
-       <%=link_to new_group_path,class: "btn btn-warning mt-5" do %>
-      <i class="fa-solid fa-plus"></i>
+      </div>
+      <%=link_to new_group_path,class: "btn btn-warning mt-5" do %>
+        <i class="fa-solid fa-plus"></i>
       <% end %>
     </div>
-
   </div>
 </div>

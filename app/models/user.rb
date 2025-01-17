@@ -4,21 +4,21 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :relationships,class_name: "Relationship",foreign_key: :follower_id,dependent: :destroy
-  has_many :followings,through: :relationships,source: :followed
+  has_many :relationships, class_name: "Relationship", foreign_key: :follower_id, dependent: :destroy
+  has_many :followings, through: :relationships, source: :followed
 
-  has_many :reverse_relationships,class_name: "Relationship",foreign_key: :followed_id,dependent: :destroy
-  has_many :followers,through: :reverse_relationships,source: :follower
+  has_many :reverse_relationships, class_name: "Relationship", foreign_key: :followed_id, dependent: :destroy
+  has_many :followers, through: :reverse_relationships, source: :follower
 
-  has_many :user_rooms,dependent: :destroy
-  has_many :rooms,through: :user_rooms
-  has_many :chats,dependent: :destroy
-  has_many :posts,dependent: :destroy
-  has_many :group_users,dependent: :destroy
-  has_many :groups,through: :group_users
-  has_many :group_chats,dependent: :destroy
-  has_many :favorites,dependent: :destroy
-  has_many :notifications,dependent: :destroy
+  has_many :user_rooms, dependent: :destroy
+  has_many :rooms, through: :user_rooms
+  has_many :chats, dependent: :destroy
+  has_many :posts, dependent: :destroy
+  has_many :group_users, dependent: :destroy
+  has_many :groups, through: :group_users
+  has_many :group_chats, dependent: :destroy
+  has_many :favorites, dependent: :destroy
+  has_many :notifications, dependent: :destroy
 
   has_one_attached :profile_image
 
@@ -27,10 +27,11 @@ class User < ApplicationRecord
      file_path = Rails.root.join('app/assets/images/no_image.jpg')
      profile_image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
     end
-     profile_image.variant(resize_to_limit: [width,height]).processed
+    profile_image.variant(resize_to_limit: [width,height]).processed
   end
 
   GUEST_USER_EMAIL="guest@example.com"
+  
   def self.guest
     find_or_create_by!(email: GUEST_USER_EMAIL) do |user|
       user.name="guestname"

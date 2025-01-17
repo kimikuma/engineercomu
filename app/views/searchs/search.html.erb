@@ -1,19 +1,19 @@
 <div class="container">
   <div class="row">
     <%=render "layouts/menu" %>
-      <div class="col-md-5 mt-5">
-        <h3><%=@word%>の結果</h3>
-      <table>
-      <% @users.each do |user| %>
-      <tr>
-        <th class="border-bottom">
-      <%=link_to user.name,user_path(user) %>
-      <%=user.introduction %>
-      <%=image_tag user.get_profile_image(40,40) %>
-      </th>
-      </tr>
-      <% end %>
-      </table>
+    <div class="col-md-5 mt-5">
+      <h3><%=@word%>の結果</h3>
+        <table>
+          <% @users.each do |user| %>
+            <tr>
+              <th class="border-bottom">
+                <%=link_to user.name,user_path(user) %>
+                <%=user.introduction %>
+                <%=image_tag user.get_profile_image(40,40) %>
+              </th>
+            </tr>
+          <% end %>
+        </table>
     </div>
   </div>
 </div>

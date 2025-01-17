@@ -1,15 +1,17 @@
 <div class="container">
-<div class="row">
-<%=render "layouts/menu" %>
-<div class="col-md-5 mt-5">
-<table>
-<% @users.each do |user| %>
-<tr>
-<th class="border-bottom mb-3"><%=image_tag user.get_profile_image(50,50),class: "rounded-circle" %>
-<%=link_to user.name,user_path(user) %><br>
-<%=user.introduction%></th>
-</tr>
-<% end %>
-</table>
-</div>
+  <div class="row">
+    <%=render "layouts/menu" %>
+    <div class="col-md-5 mt-5">
+      <table>
+       <% @users.each do |user| %>
+        <tr>
+          <th class="border-bottom mb-3"><%=image_tag user.get_profile_image(50,50),class: "rounded-circle" %>
+            <%=link_to user.name,user_path(user) %><br>
+            <%=user.introduction%>
+          </th>
+        </tr>
+       <% end %>
+      </table>
+    </div>
+  </div> 
 </div>

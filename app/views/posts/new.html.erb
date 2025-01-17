@@ -1,13 +1,13 @@
 <div class="container">
   <div class="row">
     <%=render "layouts/menu" %>
-  <div class="col-md-5 mt-5">
-<%=form_with model: @post do |f| %>
-<%=image_tag current_user.get_profile_image(50,50) %>
-<%=current_user.name %>
-<p><%=f.text_area:content,placeholder: "つぶやいてみよう" %></p>
-<p><%=f.submit "つぶやく",class: "btn btn-outline-success" %></p>
-<% end %>
-</div>
-</div>
+    <div class="col-md-5 mt-5">
+      <%=form_with model: @post do |f| %>
+        <%=image_tag current_user.get_profile_image(50,50) %>
+        <%=current_user.name %>
+        <%=f.text_area:content,placeholder: "つぶやいてみよう" %><br>
+        <%=f.submit "つぶやく",class: "btn btn-outline-success" %>
+      <% end %>
+    </div>
+  </div>
 </div>

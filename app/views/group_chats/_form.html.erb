@@ -1,5 +1,5 @@
-<%=form_with url: group_group_chat_path(group),method: :post do |f| %>
-<%=f.text_field:message %>
-<%=f.hidden_field:group_id %>
-<%=f.submit "送信",class: "btn btn-outline-light"%>
+<%=form_with model: group_chat, url: group_group_chats_path(group.id), method: :post, local: false do |f| %>
+  <%=f.text_field :message %>
+  <%=f.hidden_field :group_id, value: group.id %><br>
+  <%=f.submit "送信",class: "btn btn-outline-light"%>
 <% end %>

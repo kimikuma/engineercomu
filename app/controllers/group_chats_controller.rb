@@ -2,23 +2,22 @@ class GroupChatsController < ApplicationController
    before_action :group_member,only: [:show]
 
 
-  def show
+  def index
     @group=Group.find(params[:group_id])
     @chats=@group.group_chats
-    @chat=GroupChat.new(group_id: @group.id)
+    @group_chat=current_user.group_chats.new
   end
   
 
   def create
-    @chat=current_user.group_chats.new(chat_params)
-    @chat.save
-    redirect_to request.referer
+    @group=Group.find(params[:group_id])
+    @group_chat=current_user.group_chats.new(chat_params)
+    @group_chat.save
   end
 
   def destroy
-    @chat=current_user.group_chats.find(params[:id])
-    @chat.destroy
-    redirect_to request.referer
+    @group_chat=current_user.group_chats.find(params[:id])
+    @group_chat.destroy
   end
 
   private
