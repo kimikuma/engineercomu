@@ -22,10 +22,10 @@
 * 情報交換をしたい時
 
 ## 開発環境
-- OS：Mac
-- 言語：HTML,CSS,JavaScript,Ruby,SQL
-- フレームワーク：Ruby on Rails
-- JSライブラリ：jQuery
+- OS:Mac
+- 言語:HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク:Ruby on Rails
+- JSライブラリ:jQuery
 
 
 ## コメント
